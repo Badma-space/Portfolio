@@ -2,102 +2,142 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    // Full-page scroller with snap
+    <main className="h-dvh bg-gradient-to-r from-[#0f172a] via-[#111827] to-[#0f172a] text-white">
+      <div className="h-full overflow-y-auto snap-y snap-mandatory scroll-smooth">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+        {/* ============== HERO ============== */}
+        <section className="snap-start min-h-dvh flex items-center justify-center px-6">
+          <div className="max-w-5xl w-full bg-[#0f172a]/70 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between p-10 gap-10 border border-white/5">
+            
+            {/* Left - Text */}
+            <div className="flex-1">
+              <h1 className="text-5xl font-extrabold leading-tight">
+                Hi, I’m <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Badma Shree</span>
+              </h1>
+              <h2 className="mt-3 text-2xl text-gray-300 font-semibold">
+                Full‑Stack Developer
+              </h2>
+              <p className="mt-5 max-w-md text-gray-400">
+                I’m passionate about building scalable, user-focused web applications. I combine clean code with modern design principles to create seamless digital experiences.
+                I design, develop, and deliver web apps that make an impact.
+              </p>
+
+              <div className="mt-8 flex items-center gap-4">
+                <a
+                  href="#contact"
+                  className="px-6 py-3 rounded-full font-medium bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-[1.03] transition-transform shadow-lg"
+                >
+                  Let’s connect
+                </a>
+                <a
+                  href="#skills"
+                  className="px-6 py-3 rounded-full font-medium border border-white/15 hover:bg-white/5 transition"
+                >
+                  View skills
+                </a>
+              </div>
+            </div>
+
+            {/* Right - Profile with glowing ring */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative w-64 h-64 rounded-full p-[6px]">
+                {/* animated glow ring */}
+                <div className="absolute inset-0 rounded-full glow-ring" aria-hidden />
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-black">
+                  <Image
+                    src="/Profile.jpg"  // put your image in /public/profile.jpg
+                    alt="Badma Shree"
+                    width={256}
+                    height={256}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* scroll hint */}
+          <a href="#skills" className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/60 hover:text-white/90">
+            swipe / scroll for more ↓
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        </section>
+
+        {/* ============== SKILLS ============== */}
+        <section id="skills" className="snap-start min-h-dvh flex items-center justify-center px-6">
+          <div className="max-w-5xl w-full bg-[#0f172a]/70 backdrop-blur rounded-3xl shadow-2xl p-10 border border-white/5">
+            <h3 className="text-3xl font-bold">Skills</h3>
+            <p className="mt-2 text-gray-400">A quick look at the tools I use most.</p>
+
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5 perspective-1000">
+              {[
+                { src: "/Html.jpg", label: "HTML" },
+                { src: "/Css.jpg", label: "CSS" },
+                { src: "/Javascript.jpg", label: "JavaScript" },
+                { src: "/react.jpg", label: "React" },
+                { src: "/Node.jpg", label: "Node.js" },
+                { src: "/Django.jpg", label: "Django" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="group rounded-2xl border border-white/10 bg-white/5 p-4 shadow hover:shadow-xl transition
+                             transform-gpu hover:-rotate-y-6 hover:rotate-x-3 hover:scale-[1.04]"
+                  title={item.label}
+                >
+                  <div className="aspect-square rounded-xl flex items-center justify-center bg-black/20">
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      width={72}
+                      height={72}
+                      className="opacity-90 group-hover:opacity-100 transition"
+                    />
+                  </div>
+                  <p className="mt-3 text-center text-sm text-gray-300">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============== CONTACT ============== */}
+        <section id="contact" className="snap-start min-h-dvh flex items-center justify-center px-6">
+        <div className="max-w-3xl w-full bg-[#0f172a]/70 backdrop-blur rounded-3xl shadow-2xl p-10 text-center border border-white/5">
+        <h3 className="text-3xl font-bold">Contact</h3>
+        <p className="mt-2 text-gray-400">I’m open to opportunities and collaborations.</p>
+
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://www.linkedin.com/in/badma-shree-2418aa251"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+          className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10"
+      >
+        🔗 LinkedIn
         </a>
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://github.com/Badma-space"
           target="_blank"
           rel="noopener noreferrer"
+          className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
+        🖥️ GitHub
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+        <a href="mailto:badmashree17@gmail.com" className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10">
+          📧 badmashree17@gmail.com
         </a>
-      </footer>
+        <a href="tel:+919025642103" className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10">
+          📱 +91 9025642103
+        </a>
+      </div>
+
+      <a href="#" className="block mt-10 text-xs text-white/60 hover:text-white/90">
+        back to top ↑
+      </a>
+      </div>
+     </section>
     </div>
+  </main>    
   );
 }
